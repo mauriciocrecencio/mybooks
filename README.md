@@ -13,6 +13,9 @@ https://mybooks-five.vercel.app
 
 O MyBooks é uma plataforma onde você consegue buscar por livros e adicioná-los ao seus favoritos.
 
+## Issues
+
+- A paginação não está funcionando como deveria, está com alguns bugs e as páginas estão definidias para 10 independente da quantidade de livros.
 
 
 ## Instalação
