@@ -19,6 +19,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   margin: 2% 0;
+  border: 1px solid black;
 `
 export const FavoriteButton = styled.button``
 

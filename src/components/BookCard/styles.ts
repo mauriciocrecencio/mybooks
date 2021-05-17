@@ -23,6 +23,7 @@ export const Container = styled.div`
 
 export const Img = styled.img`
   border-radius: 6px;
+  border: 1px solid black;
 `
 export const Label = styled.div`
   font-weight: bold;
