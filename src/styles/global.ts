@@ -1,9 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import backgroundImage from '../assets/images/background-image.jpg'
 
 export default createGlobalStyle`
   body {
-    background-image: url(${backgroundImage}) ;
     background: #59C173;  
     background: -webkit-linear-gradient(to right, #5D26C1, #a17fe0, #59C173); 
     background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); 
