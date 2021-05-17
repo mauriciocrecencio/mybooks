@@ -2,14 +2,19 @@ import { useRef } from 'react'
 import * as S from './styles'
 import { getBooks } from '../../helpers/getBooks'
 
-function SearchAppBar({ updateBooks, setBook }) {
+function SearchAppBar({ updateBooks, setBook, setTotalItems }) {
   const input = useRef(null)
 
   const searchBooks = async e => {
     e.preventDefault()
     const book = input.current.value
     const books = await getBooks(book, 0)
-    updateContext(books, book)
+    setBook(book)
+    if (!books) {
+      return
+    }
+    updateContext(books.newBooks, book)
+    setTotalItems(books.totalItems)
   }
 
   const updateContext = (books, book) => {

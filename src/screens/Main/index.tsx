@@ -21,10 +21,18 @@ export default function Main() {
       <Title />
       <S.WrapperSearchBarAndButtons>
         <ButtonFavorites placeholder='FAVORITOS' onClick={goToFavorites} />
-        <SearchAppBar setBook={context.setBook} updateBooks={context.updateBooks} />
+        <SearchAppBar
+          setBook={context.setBook}
+          updateBooks={context.updateBooks}
+          setTotalItems={context.setTotalItems}
+        />
       </S.WrapperSearchBarAndButtons>
       {context.books.length > 0 && (
-        <BasicPagination bookName={context.book} updateBooks={context.updateBooks} />
+        <BasicPagination
+          totalItems={context.totalItems}
+          bookName={context.book}
+          updateBooks={context.updateBooks}
+        />
       )}
       <BookList pathname={history.location.pathname} />
     </S.Container>

@@ -3,13 +3,23 @@ const BookContext = createContext(undefined)
 
 export const BookProvider: React.FC = ({ children }) => {
   const [books, setBooks] = useState<Book[] | []>([])
-  const [book, setBook] = useState<Book | []>([])
+  const [book, setBook] = useState<Book | ''>('')
   const [favoriteBooks, setFavoriteBooks] = useState<Book | []>([])
+  const [totalItems, setTotalItems] = useState(null)
 
   const updateBooks = (newBooks: Book[]) => {
     setBooks(newBooks)
   }
-  const values = { books, updateBooks, book, setBook, favoriteBooks, setFavoriteBooks }
+  const values = {
+    books,
+    updateBooks,
+    book,
+    setBook,
+    favoriteBooks,
+    setFavoriteBooks,
+    totalItems,
+    setTotalItems,
+  }
   return <BookContext.Provider value={values}>{children}</BookContext.Provider>
 }
 

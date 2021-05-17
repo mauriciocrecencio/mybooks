@@ -13,6 +13,7 @@ const refactorData = fetchedBooks => {
 }
 
 export const getBooks = async (bookName, pagination) => {
+  let totalItems
   const fetchedData = await api
     .get(`/volumes?q=${bookName}`, {
       params: {
@@ -20,7 +21,13 @@ export const getBooks = async (bookName, pagination) => {
         startIndex: pagination || 0,
       },
     })
-    .then(data => data.data.items)
+    .then(data => {
+      totalItems = data.data.totalItems
+      return data.data.items
+    })
+  if (totalItems === 0) {
+    return null
+  }
   const newBooks = refactorData(fetchedData)
-  return newBooks
+  return { newBooks, totalItems }
 }
