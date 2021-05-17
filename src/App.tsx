@@ -1,10 +1,15 @@
 import React from 'react'
+import { BookProvider } from './context/book'
+import Routes from './routes'
 import GlobalStyles from './styles/global'
 
-function App () {
+function App() {
   return (
     <>
-    <GlobalStyles/>
+      <GlobalStyles />
+      <BookProvider>
+        <Routes />
+      </BookProvider>
     </>
   )
 }
