@@ -18,9 +18,7 @@ export const Button = styled.button`
   font-size: 1.2rem;
   color: #ffd639;
 `
-export const FavoriteIcon = styled(StarIcon).attrs(props => ({
-  fontSize: 'big',
-}))`
+export const FavoriteIcon = styled(StarIcon)`
   left: 0%;
   margin-left: 2%;
   color: #fbaf00;
