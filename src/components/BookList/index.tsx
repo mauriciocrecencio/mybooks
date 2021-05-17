@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import BookContext from '../../context/book'
 import BookCard from '../BookCard'
+import LoadingBar from '../LoadingBar'
 import * as S from './styles'
 
 export function BookList({ pathname }) {
@@ -8,8 +9,11 @@ export function BookList({ pathname }) {
 
   return (
     <S.Container>
-      {context.books.length === 0 && context.book.length > 0 && (
-        <S.NoFound>Nenhum livro encontrado.</S.NoFound>
+      {context.isLoading ? (
+        <LoadingBar />
+      ) : (
+        context.books.length === 0 &&
+        context.book.length > 0 && <S.NoFound>Nenhum livro encontrado.</S.NoFound>
       )}
       {pathname === '/favorites' ? (
         context.favoriteBooks.length === 0 ? (

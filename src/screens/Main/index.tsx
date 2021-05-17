@@ -25,6 +25,8 @@ export default function Main() {
           setBook={context.setBook}
           updateBooks={context.updateBooks}
           setTotalItems={context.setTotalItems}
+          setLoading={context.setLoading}
+          isLoading={context.isLoading}
         />
       </S.WrapperSearchBarAndButtons>
       {context.books.length > 0 && (

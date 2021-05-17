@@ -6,6 +6,7 @@ export const BookProvider: React.FC = ({ children }) => {
   const [book, setBook] = useState<Book | ''>('')
   const [favoriteBooks, setFavoriteBooks] = useState<Book | []>([])
   const [totalItems, setTotalItems] = useState(null)
+  const [isLoading, setLoading] = useState(false)
 
   const updateBooks = (newBooks: Book[]) => {
     setBooks(newBooks)
@@ -19,6 +20,8 @@ export const BookProvider: React.FC = ({ children }) => {
     setFavoriteBooks,
     totalItems,
     setTotalItems,
+    isLoading,
+    setLoading,
   }
   return <BookContext.Provider value={values}>{children}</BookContext.Provider>
 }
