@@ -9,39 +9,46 @@ export default function BookModal({ isOpen, handleClose, book }) {
   const { label, image, description, publishDate } = book
   const bookId = book.id
 
-  const removeBookFavorite = () => {
-    handleClose
-    const indexToRemove = context.favoriteBooks.findIndex(book => book.id === bookId)
-    const newFavoriteBooks = [...context.favoriteBooks]
-    newFavoriteBooks.splice(indexToRemove, 1)
-    context.setFavoriteBooks(newFavoriteBooks)
-
+  const updateContext = action => {
     const books = [...context.books]
     const favoriteBook = books.find(book => book.id === bookId)
     const favoriteBookIndex = books.findIndex(book => book.id === bookId)
-    favoriteBook.isFavorite = false
-    const updatedBooks = books.splice(favoriteBookIndex, 1, favoriteBook)
-    console.log(updatedBooks)
-    context.updateBooks(books)
+    switch (action) {
+      case 'remove':
+        const indexToRemove = context.favoriteBooks.findIndex(book => book.id === bookId)
+        const newFavoriteBooksContext = [...context.favoriteBooks]
+        newFavoriteBooksContext.splice(indexToRemove, 1)
+        context.setFavoriteBooks(newFavoriteBooksContext)
+        favoriteBook.isFavorite = false
+        books.splice(favoriteBookIndex, 1, favoriteBook)
+        context.updateBooks(books)
+        break
+
+      case 'addToFavorite':
+        const newBook = { ...book, isFavorite: true }
+        context.setFavoriteBooks([...context.favoriteBooks, newBook])
+        favoriteBook.isFavorite = true
+        books.splice(favoriteBookIndex, 1, favoriteBook)
+        context.updateBooks(books)
+        break
+      default:
+        return
+    }
+  }
+
+  const removeBookFavorite = () => {
+    handleClose
+    updateContext('remove')
   }
 
   const favoriteBook = () => {
     handleClose
-    const newBook = { ...book, isFavorite: true }
-    context.setFavoriteBooks([...context.favoriteBooks, newBook])
-
-    const books = [...context.books]
-    const favoriteBook = books.find(book => book.id === bookId)
-    const favoriteBookIndex = books.findIndex(book => book.id === bookId)
-    favoriteBook.isFavorite = true
-    books.splice(favoriteBookIndex, 1, favoriteBook)
-    context.updateBooks(books)
+    updateContext('addToFavorite')
   }
 
   return (
     <>
       <Dialog
-        // fullScreen={true}
         maxWidth='xl'
         fullWidth={true}
         open={isOpen}
