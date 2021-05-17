@@ -3,15 +3,17 @@ import backgroundImage from '../assets/images/background-image.jpg'
 
 export default createGlobalStyle`
   body {
-    background-position: center;
-    background-image: url(${backgroundImage});
-    height: 100vh;
+    background-image: url(${backgroundImage}) ;
+    background: #59C173;  
+    background: -webkit-linear-gradient(to right, #5D26C1, #a17fe0, #59C173); 
+    background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); 
+    justify-content: center;
   }
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif
+    font-family: 'Roboto', sans-serif;
   }
   button , input {
     outline: 0;
