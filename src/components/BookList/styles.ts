@@ -11,3 +11,7 @@ export const NoFavorites = styled.div`
   margin-top: 4%;
   font-size: 1.5rem;
 `
+export const NoFound = styled.div`
+  margin-top: 2%;
+  font-weight: bold;
+`
