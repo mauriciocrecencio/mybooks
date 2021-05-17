@@ -42,6 +42,9 @@ export const WrapperButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 1220px) {
+    flex-direction: column;
+  }
 `
 
 export const Description = styled.div`

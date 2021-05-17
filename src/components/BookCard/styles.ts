@@ -36,6 +36,7 @@ export const Description = styled.div`
   font-size: 1rem;
 `
 export const Date = styled.div`
+  margin-top: 2%;
   font-weight: bold;
 `
 
@@ -46,8 +47,12 @@ export const WrapperText = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const Star = styled(FavoriteIcon)`
+export const Star = styled(FavoriteIcon).attrs({ fontSize: 'large' })`
   position: absolute;
   top: -9%;
   left: -5.5%;
+`
+export const WrapperTop = styled.div`
+  display: flex;
+  align-items: center;
 `
